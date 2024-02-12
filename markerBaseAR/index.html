@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- import studio-backend api -->
+    <script src="https://raw.githack.com/AR-js-org/studio-backend/master/dist/arjs-studio-backend.min.js"></script>
+
+    <!-- import aframe to support model preview -->
+    <script src="https://aframe.io/releases/1.0.4/aframe.js"></script>
+    <script src="https://cdn.statically.io/gh/donmccurdy/aframe-extras/fe293f78/dist/aframe-extras.loaders.js"></script>
+
+    <!-- import JsZip -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.3.0/jszip.min.js"></script>
+
+
+    <title>Liberin WebAR</title>
+    <script src="../common/ModalController/ModelControler.js"></script>
+    <script src="../common/header/header.js"></script>
+    <script src="../common/upload/fileHelper.js"></script>
+    <script src="../common//fileHolder/fileHolder.js"></script>
+    <script src="../common//Error//MarkerError.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <script src="./script.js"></script>
+    <script src="../common/upload/handleContentUpload.js"></script>
+    <script src="../common/upload/contentFileUpload.js"></script>
+
+
+
+</head>
+
+<body>
+
+    <header>
+        <page-header></page-header>
+    </header>
+
+    <main>
+
+        <div class="container pt-3">
+            <!-- Content here -->
+
+            <div class="row gx-5">
+                <p class="h2">Marker Base AR</p>
+                <p class="p"> A marker-based AR experience uses a black and white image to anchor the AR
+                    content.
+                    Your scene will appear when the marker is in the field of view of your camera.</p>
+
+                <p class="paragraph">
+                    You can print a paper version of your marker (which we recommend), or display it on a
+                    screen.
+                </p>
+
+                <div class="col-6">
+                    <div class="p-3">
+                        <!-- <p class="h2">Marker Base AR</p> -->
+                        <p class="lead">1. Use a premade marker or upload your own</p>
+                        <p class="paragraph">
+                            Here is a sample marker for you. Feel free to use it as the marker for your project.
+                            Alternatively, click “Upload image” to use a custom one. Not sure what makes a good
+                            marker? Check
+                            out <a class="link" target="_blank"
+                                href="https://github.com/AR-js-org/studio/blob/master/what-makes-a-good-marker.md">this
+                                guide</a>.
+                        </p>
+
+                        <ul>
+                            <li>Marker File Size less then 10mb And Type (jpeg, png)</li>
+                        </ul>
+
+                        <label class="passive-button">
+                            <label for="formFileSm" class="form-label">Upload Marker</label>
+                            <input onchange="UploadFile(this)" class="form-control form-control-sm" id="formFileSm"
+                                type="file" accept="image/png, image/jpeg">
+                        </label>
+
+                        <p id="marker-error" class="error pt-4 text-danger">
+
+                        </p>
+                    </div>
+                </div>
+
+                <div class="col-6">
+                    <div class="px-3">
+                        <div class="marker">
+                            <img src="../assits/marker.png" id="marker" alt="Default marker png" />
+                            <div class="download-marker"
+                                style="display: flex; justify-content: flex-end; padding: 1em 0;">
+                                <div class="download-default-marker">
+                                    <span>
+                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none">
+                                            <path
+                                                d="M16.5 8L15.09 6.59L9.5 12.17V0H7.5V12.17L1.92 6.58L0.5 8L8.5 16L16.5 8Z"
+                                                fill="black" />
+                                        </svg>
+                                    </span>
+                                    <a id="marker-download" class="filename"
+                                        style="text-decoration: none; color: black;" href="../assits/marker.png"
+                                        download>Download marker</a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="row gx-5">
+                <div class="col-6">
+                    <div class="p-3">
+                        <p class="lead">2. Choose the content </p>
+                        <p class="paragraph">
+                        <p>Select the type of content you would like to link to your marker and then upload the file
+                            from your
+                            computer.</p>
+                        <p class="bold">
+                            Please check the file name and remove whitepaces.
+                        </p>
+                        <ul>
+                            <li>3D Object (.gltf, .glb .zip; max size 100MB)</li>
+                            <li>Image (.jpg, .png, .gif; max size 15MB)</li>
+                            <li>Video (.mp4; max size 100MB)</li>
+                        </ul>
+                        </p>
+                        <label class="passive-button file-input">
+                            <input id="content-file" accept="*" type="file" hidden onchange="UploadFile(this)" />
+                            <label class="passive-button">
+
+                                <input class="form-control form-control-sm" id="formFileSm" type="file"
+                                    onchange="handleContentUpload(this)" class="form-control form-control-sm"
+                                    id="formFileSm" type="file"
+                                    accept=".glb, .mp4, image/png, image/gif, image/x-ms-bmp">
+
+                            </label>
+                        </label>
+                        <p id="content-error" class="error"></p>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="p-3">
+                        <div id="content-preview" class="card" target="content-file">
+                            <img src="../assits/upload.jpg" class="card-img-top" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </main>
+
+    <footer>
+
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
+    <script src="../common/upload/fileUpload.js"></script>
+
+</body>
+
+</html>

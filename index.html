@@ -1,26 +1,96 @@
+<!-- <!doctype html>
+<html>
+
+<head>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-detector.js"></script>
+    <script
+        src="https://raw.githack.com/AR-js-org/studio-backend/master/src/modules/marker/tools/gesture-handler.js"></script>
+    <script>
+        AFRAME.registerComponent('videohandler', {
+            init: function () {
+                var marker = this.el;
+                this.vid = document.querySelector("#vid");
+
+                marker.addEventListener('markerFound', function () {
+                    this.toggle = true;
+                    this.vid.play();
+                }.bind(this));
+
+                marker.addEventListener('markerLost', function () {
+                    this.toggle = false;
+                    this.vid.pause();
+                }.bind(this));
+            },
+        });
+    </script>
+</head>
+
+<body style="margin: 0; overflow: hidden;">
+    <a-scene vr-mode-ui="enabled: false" loading-screen="enabled: false;"
+        arjs='sourceType: webcam; debugUIEnabled: false;' id="scene" embedded gesture-detector>
+
+        <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+        <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+        <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+        <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+        <a-sky color="#ECECEC"></a-sky>
+
+
+        <a-assets>
+            <video id="vid" src="assets/asset.mp4" preload="auto" response-type="arraybuffer" loop crossorigin
+                webkit-playsinline autoplay muted playsinline></video>
+        </a-assets>
+
+        <a-marker type="pattern" preset="custom" url="assets/marker.patt" videohandler smooth="true" smoothCount="10"
+            smoothTolerance="0.01" smoothThreshold="5" raycaster="objects: .clickable" emitevents="true"
+            cursor="fuse: false; rayOrigin: mouse;" id="markerA">
+            <a-video src="#vid" scale="1 1 1" position="0 0.1 0" rotation="-90 0 0" class="clickable"
+                gesture-handler></a-video>
+        </a-marker>
+
+        <a-entity camera></a-entity>
+    </a-scene>
+</body>
+
+</html> -->
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <title>Liberin WebAR</title>
-
-    <style>
-        .comingSoon {
-            height: 90vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-    </style>
+    <script src="./common/header/header.js"></script>
 </head>
 
 <body>
-    <div class="comingSoon">
 
-        <h1>Coming Soon</h1>
-    </div>
+    <header>
+        <page-header></page-header>
+
+    </header>
+
+    <main>
+
+    </main>
+
+    <footer>
+
+
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+
 </body>
 
 </html>
