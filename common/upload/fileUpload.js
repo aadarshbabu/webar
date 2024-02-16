@@ -36,8 +36,8 @@ function UploadFile(self) {
         const blob = dataURItoBlob(fullMarkerImage);
         const fileURL = URL.createObjectURL(blob);
 
-        const preview = document.getElementById("marker-preview");
-        preview.innerHTML = previewUrl(fileURL, file.name, true);
+        // const preview = document.getElementById("marker-preview");
+        previewUrl(fileURL, file.name, true);
         checkUserUploadStatus();
       }
     );

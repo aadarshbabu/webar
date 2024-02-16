@@ -1,6 +1,11 @@
+function enablePublishButton() {
+  document.getElementById("publish").style.opacity = 1;
+  // document.getElementById("download").style.opacity = 1;
+}
+
 function handleContentUpload(self) {
   if (typeof self === "boolean") {
-    const assetInput = document.getElementById("assets");
+    const assetInput = document.getElementById("content-file");
 
     assetInput.click();
   }
@@ -14,10 +19,14 @@ function handleContentUpload(self) {
       size: { width: 1.0, height: 1.0, depth: 1.0 },
     };
   }
+
   // window.assetParam.scale = 1.0;
   // window.assetParam.size = { width: 1.0, height: 1.0, depth: 1.0 };
 
   if (isValidFile(window.assetType, file, "content-error")) {
+    if (window.markerImage) {
+      enablePublishButton();
+    }
     switch (window.assetType) {
       case "image": {
         handleImageUpload(file);

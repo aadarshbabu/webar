@@ -20,12 +20,11 @@ const previewVideoTemplate = (fileUrl, name) => {
 };
 
 const unloadFileTemplate = (fileName, fileURL) => `
-    <div class="filename-container">
-        <div class="remove-marker">
+        <div onclick="onclick="handleContentUpload(true)" class="remove-marker">
             <span class="crossmark" onclick="handleContentUpload(true)">&times;</span>
-            <span class="filename">Remove</span>
+            <span class="filename">Change</span>
         </div>
-    </div>`;
+   `;
 
 // const previewModelTemplate = () => {
 //   let preview = document.getElementById("content-preview");
@@ -33,9 +32,11 @@ const unloadFileTemplate = (fileName, fileURL) => `
 // };
 
 const unloadFileStyle = `
+ .remove-marker{
+    cursor:pointer
+ }
     .crossmark {
         vertical-align: middle;
-        font-size: 2.25em;
     }
     .download-marker {
         display: flex;
@@ -53,8 +54,8 @@ const unloadFileStyle = `
 
 const previewModelStyle = `
     .modelFrame {
-        width: 23.75em;
-        height: 23.75em;
+        width: 10em;
+        height: 10em;
         object-fit: contain;
         font-size: 1.25em;
         text-align: center;
@@ -154,6 +155,13 @@ function createUploadableAsset() {
       fullMarkerImage: window.fullMarkerImage,
     });
   });
+}
+
+function openFilePicker() {
+  document.getElementById("formFileSm").click();
+}
+function openAssetsPicker() {
+  document.getElementById("content-file").click();
 }
 
 const saveBtn = () => {

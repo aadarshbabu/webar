@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  line-height: normal;
+}
+
+:root {
+  /* fonts */
+  --font-space-grotesk: "Space Grotesk";
+
+  /* font sizes */
+  --font-size-lg: 18px;
+
+  /* Colors */
+  --asklepios-gray-10: #f2f5f9;
+  --asklepios-gray-80: #242e49;
+  --therapeia-blue-60: #0f67fe;
+  --asklepios-gray-white: #fff;
+  --asklepios-gray-60: #5d6a85;
+
+  /* Gaps */
+  --gap-51xl: 70px;
+  --gap-29xl: 48px;
+
+  /* Paddings */
+  --padding-5xl: 24px;
+  --padding-base: 16px;
+
+  /* Border radiuses */
+  --br-xs: 12px;
+}

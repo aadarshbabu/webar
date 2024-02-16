@@ -10,15 +10,15 @@
     <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/studio-backend/master/dist/arjs-studio-backend.min.js"></script>
 
-
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus Jakarta Sans:wght@700&display=swap" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space Grotesk:wght@400;500;700&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
 </head>
 
 <body>
-    <div id="qrcode"></div>
-
-
-
-
     <div class="d-flex justify-content-center" id="spinnerContainer">
 
         <div class="spinner-border" role="status">
@@ -26,10 +26,135 @@
         </div>
     </div>
 
+    <!-- Button trigger modal -->
+    <button style="display: none;" id="openModal" type="button" class="btn btn-primary" data-bs-toggle="modal"
+        data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
 
-    <div id="error">
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <div class="export-project-overlay">
+                        <section class="content">
+                            <div class="framecontent">
+                                <div class="top-nav">
+                                    <b class="actionable-insights">Your project demo</b>
+                                    <button onclick="closeModal()" type="button" class="btn-close"
+                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="main">
+                                    <div class="row">
+                                        <div class="col-left">
+                                            <button class="tag">
+                                                <b class="texttag">STEP 1</b>
+                                            </button>
+                                            <div class="frameqrcode">
+                                                <h1 class="heading">QR Code</h1>
+                                                <div class="downloadbutton">
+                                                    Scan this QR using your camera
+                                                </div>
+                                                <div class="input-field">
+                                                    <div class="input-field-base">
+                                                        <div class="input-with-label">
+                                                            <div class="label">Website</div>
+                                                            <div class="input">
+                                                                <div class="add-on">
+                                                                    <div class="addon">https://</div>
+                                                                </div>
+                                                                <button class="text-input">
+                                                                    <div id="link" class="text">
+                                                                        blog.socialschedule.in/testProject78156repo
+                                                                    </div>
+                                                                    <img class="copy-02-icon" alt=""
+                                                                        src="./public/copy02.svg" />
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hint-text">
+                                                            This is a hint text to help user.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- <div class="q-r-code-frame">
+                                            <!-- <img class="qr-code-1-traced" loading="eager" alt=""
+                                                src="./public/qrcode-1-traced.svg" /> -->
+                                            <!-- </div>  -->
 
+                                            <div id="qrSpinner" class="spinner-border" role="status">
+                                                <span class="visually-hidden">Loading...</span>
+                                            </div>
+
+                                            <div id="qrcode">
+
+                                            </div>
+                                        </div>
+                                        <div class="col-left1">
+                                            <div class="tag-parent">
+                                                <button class="tag1">
+                                                    <b class="inputtext">STEP 2</b>
+                                                </button>
+                                                <div class="frameheadingimage">
+                                                    <h1 class="heading1">WebAR Marker</h1>
+                                                    <div class="textinput">
+                                                        Focus your camera on this WebAR marker
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="image-3-traced-wrapper" id="marker">
+                                                <img id="markerImage" class="image-3-traced" loading="eager" alt=""
+                                                    src="./public/image-3-traced.svg" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="button-primary mt-2">
+                                <img class="download-02-icon" alt="" src="./public/download02.svg" />
+
+                                <div class="content1">
+                                    <b class="download-instance">Download your WebAR assets</b>
+                                </div>
+                            </button>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
+
+
+
+    <div id="thanku" style="display: none;">
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div class="card col-md-4 bg-white shadow-md p-5">
+                <div class="mb-4 text-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-success" width="75" height="75"
+                        fill="currentColor" class="bi bi-check-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                        <path
+                            d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
+                    </svg>
+                </div>
+                <div class="text-center">
+                    <h1>Thank You !</h1>
+                    <p>Create more and make more WebAR </p>
+                    <a href="/" class="btn btn-outline-success">Back Home</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="errorview" class="vh-100 d-flex justify-content-center align-items-center">
+        <div id="error">
+
+        </div>
+    </div>
+
 </body>
 
 <script src="./script.js"></script>

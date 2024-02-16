@@ -2,6 +2,10 @@
 <html lang="en">
 
 <head>
+    <link rel="stylesheet" href="./global.css" />
+    <link rel="stylesheet" href="./index.css" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Space Grotesk:wght@400;500;700&display=swap" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -38,14 +42,213 @@
 
 <body>
 
-    <header>
-        <page-header></page-header>
-    </header>
+    <div class="page-2">
+        <header class="top-nav">
+            <div class="wrapper-logo-square">
+                <img class="logo-square-icon" loading="eager" alt="" src="./public/logo-square.svg" />
+            </div>
+            <div class="features-section-container">
+                <div class="button-icon-fab">
+                    <img class="monotone-add-icon" loading="eager" alt="" src="./public/monotone-add.svg" />
+
+                    <b class="monotone-add-instance">Send Feedback</b>
+                </div>
+            </div>
+        </header>
+
+        <section class="features-section">
+            <div class="container">
+                <div class="content">
+                    <div class="main">
+                        <div class="row1">
+                            <div class="col-left">
+                                <button class="tag">
+                                    <b class="download-text">STEP 1</b>
+                                </button>
+                                <div class="container-frame">
+                                    <div class="frame-features-arrow">
+                                        <h1 class="heading">
+                                            Use a premade marker or upload your own
+                                        </h1>
+                                        <div class="arrow-circle-up-container">
+                                            Here is a sample marker for you. Feel free to use it as
+                                            the marker for your project. Alternatively, click
+                                            “Upload image” to use a custom one. Not sure what makes
+                                            a good marker? Check out 
+                                            <a class="this-guide"
+                                                href="https://github.com/AR-js-org/studio/blob/master/what-makes-a-good-marker.md"
+                                                target="_blank">
+                                                <span class="this-guide1">this guide</span> </a>.
+                                        </div>
+                                        <p id="marker-error" class="error pt-4 text-danger">
+
+                                        </p>
+                                    </div>
+                                </div>
+                                <button onclick="openFilePicker()" class="button-primary">
+
+                                    <div class="content1">
+                                        <img class="download-02-icon" alt="" src="./public/download02@2x.png" />
+
+                                        <b class="logo-square-instance">Upload Image</b>
+                                    </div>
+                                </button>
+
+                                <input style="display: none;" onchange="UploadFile(this)"
+                                    class="form-control form-control-sm" id="formFileSm" type="file"
+                                    accept="image/png, image/jpeg">
+
+                            </div>
+                            <div>
+                                <img class="features-section-frame" id="marker" loading="eager" alt=""
+                                    src="./public/frame.svg" />
+                                <a id="marker-download" class="filename" style="text-decoration: none;"
+                                    href="../assets/marker.png" download>Download marker</a>
+                            </div>
+
+
+                        </div>
+                        <div class="row1">
+                            <div class="frame">
+                                <button class="tag1">
+                                    <b class="text">step 2</b>
+                                </button>
+                                <div class="frame1">
+                                    <div class="frame2">
+                                        <h1 class="heading1">Choose the content</h1>
+                                        <div class="text1">
+                                            <p class="select-the-type">
+                                                Select the type of content you would like to link to
+                                                your marker and then upload the file from your
+                                                computer.
+                                            </p>
+                                            <p class="please-check-the">
+                                                Please check the file name and remove whitepaces.
+                                            </p>
+                                            <ul class="d-object-gltf-glb-zip-ma">
+                                                <li class="d-object-gltf">
+                                                    3D Object (.gltf, .glb .zip; max size 50MB)
+                                                </li>
+                                                <li class="image-jpg-png">
+                                                    Image (.jpg, .png, .gif; max size 15MB)
+                                                </li>
+                                                <li>Video (.mp4; max size 25MB)</li>
+                                            </ul>
+                                            <p id="content-error" class="error"></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button onclick="openAssetsPicker()" class="button-primary1">
+                                    <div class="content2">
+                                        <img class="download-02-icon1" alt="" src="./public/download02@2x.png" />
+                                        <b class="text2">Upload File</b>
+                                    </div>
+                                </button>
+                                <input id="content-file" accept=".glb, .mp4, image/png, image/gif, image/x-ms-bmp"
+                                    type="file" hidden onchange="handleContentUpload(this)" />
+                            </div>
+                            <div>
+                                <!-- <img class="frame-icon" loading="eager" alt="" src="./public/frame-1@2x.png" /> -->
+                                <div id="content-preview" onclick="handleContentUpload(true)" id="content-preview"
+                                    class="card" target="content-file">
+                                    <img src="../assets/upload.jpg" class="card-img-top" alt="...">
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="benefits-section">
+            <footer class="container1">
+                <div class="row2">
+                    <div class="notapplicableastheydonthaveid">
+                        <button class="tag2">
+                            <b class="text-instance">step 3</b>
+                        </button>
+                        <div class="frame-with-heading-text-button">
+                            <div class="main-row-col-left-tag-text-fra">
+                                <h1 class="heading2">Export the project</h1>
+                                <div class="notapplicableastheydonthaveid1">
+                                    <p class="your-project-is">
+                                        Your project is going to be safely hosted on GitHub - a
+                                        space for code repositories online.
+                                    </p>
+                                    <p class="if-you-would">
+                                        If you would like to save your project locally, you can
+                                        also download the package containing the generated code
+                                        and all supporting files.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notapplicableastheydonthaveid2">
+
+                            <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="button-primary2"
+                                id="publish" href="">
+                                <div class="content3">
+                                    <b class="notapplicableastheydonthaveaun">Publish on Github</b>
+                                </div>
+                            </a>
+
+                            <button id="download" class="button-primary3" onclick="makeZip()">
+                                <div class="content4">
+                                    <b class="text3">Download Package</b>
+                                    <img class="download-02-icon2" alt="" src="./public/download02-2.svg" />
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="benefits-section-frame">
+                    <div class="arrowframe-instance">
+                        <div class="frame-with-three-arrows">
+                            <div class="up-arrow-container">
+                                <div class="child-tag-frame">
+                                    <img class="arrow-circle-up-right-icon" loading="eager" alt=""
+                                        src="./public/arrowcircleupright.svg" />
+
+                                    <img class="arrow-circle-up-right-icon1" loading="eager" alt=""
+                                        src="./public/arrowcircleupright-1.svg" />
+
+                                    <img class="arrow-circle-up-right-icon2" loading="eager" alt=""
+                                        src="./public/arrowcircleupright-2.svg" />
+                                </div>
+                            </div>
+                            <div class="up-arrow-container1">
+                                <div class="arrow-circle-up-right-parent">
+                                    <img class="arrow-circle-up-right-icon3" loading="eager" alt=""
+                                        src="./public/arrowcircleupright.svg" />
+
+                                    <img class="arrow-circle-up-right-icon4" loading="eager" alt=""
+                                        src="./public/arrowcircleupright-4.svg" />
+
+                                    <img class="arrow-circle-up-right-icon5" loading="eager" alt=""
+                                        src="./public/arrowcircleupright-2.svg" />
+                                </div>
+                            </div>
+                            <div class="child-frame">
+                                <img class="arrow-circle-up-right-icon6" loading="eager" alt=""
+                                    src="./public/arrowcircleupright.svg" />
+
+                                <img class="arrow-circle-up-right-icon7" loading="eager" alt=""
+                                    src="./public/arrowcircleupright-1.svg" />
+
+                                <img class="arrow-circle-up-right-icon8" loading="eager" alt=""
+                                    src="./public/arrowcircleupright-2.svg" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </section>
+    </div>
 
     <main>
 
-        <div class="container pt-3">
-            <!-- Content here -->
+        <!-- <div class="container pt-3">
+
 
             <div class="row gx-5">
                 <p class="h2">Marker Base AR</p>
@@ -60,7 +263,6 @@
 
                 <div class="col-6">
                     <div class="p-3">
-                        <!-- <p class="h2">Marker Base AR</p> -->
                         <p class="lead">1. Use a premade marker or upload your own</p>
                         <p class="paragraph">
                             Here is a sample marker for you. Feel free to use it as the marker for your project.
@@ -158,9 +360,9 @@
             </div>
 
 
-        </div>
+        </div> -->
 
-        <!-- Modal -->
+
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -185,7 +387,7 @@
 
     </main>
 
-    <footer>
+    <!-- <footer>
 
         <div class="footerBTN">
             <button class="btn-custom download" onclick="makeZip()">Download Zip</button>
@@ -193,26 +395,8 @@
                 href="">Publish</a>
         </div>
 
-    </footer>
-    <script>
+    </footer> -->
 
-        const currentUrl = window.location.href;
-        console.log("current", currentUrl)
-
-        // Create a URL object
-        const url = new URL(currentUrl);
-
-        // Access query parameters using URLSearchParams
-        const queryParams = new URLSearchParams(url.search);
-
-        // Get the value of a specific parameter
-        const param1Value = queryParams.get('code');
-        const param2Value = queryParams.get('state');
-
-        console.log(param1Value); // Output: value1
-        console.log(param2Value); // Output: value2
-
-    </script>
     <script src="./script.js"></script>
 
     <script src="../common/ModalController/ModelControler.js"></script>

@@ -23,6 +23,7 @@ window.onload = async () => {
   }
 
   function hideSpinner() {
+    document.getElementById("qrSpinner").remove();
     var spinnerContainer = document.getElementById("spinnerContainer");
     spinnerContainer.remove();
   }
@@ -48,8 +49,8 @@ window.onload = async () => {
 
     var qrcode = new QRCode(qrDiv, {
       text: pageUrl,
-      width: 128,
-      height: 128,
+      width: 256,
+      height: 256,
       colorDark: "#000000",
       colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.H,
@@ -61,9 +62,22 @@ window.onload = async () => {
     localStorage.getItem("projectName") + localStorage.getItem("randomString");
 
   if (response.access_token && projectName) {
+    openModal();
+
+    const imageData = window.session.fullMarkerImage
+      ? window.session.fullMarkerImage
+      : window.session.markerImage;
+
+    setMarkerImage(imageData);
+
     const githubUrl = await publishToGithub(response.access_token, projectName);
-    const qrGenerate = await generateQRCode(githubUrl);
+
+    const httpsGitUrl = convertToHttps(githubUrl);
+    const qrGenerate = await generateQRCode(httpsGitUrl);
+
     if (qrGenerate) {
+      const withoutPrefixUrl = removeHttpPrefix(httpsGitUrl);
+      setLink(withoutPrefixUrl);
       hideSpinner();
     }
   } else {
@@ -80,4 +94,53 @@ function createError(errorMessage) {
   node.style.color = "#ff0000";
 
   errorContainer.appendChild(node);
+}
+
+function setMarkerImage(url) {
+  const markerImage = document.getElementById("markerImage");
+  markerImage.setAttribute("src", url);
+}
+
+function openModal() {
+  document.getElementById("openModal").click();
+}
+
+function setLink(link) {
+  document.getElementById("link").innerText = link;
+}
+
+function showHideThankYouPage(isShow) {
+  const showThankyou = document.getElementById("thanku");
+
+  showThankyou.style.display = "none";
+  if (isShow) {
+    showThankyou.style.display = "block";
+    createError("");
+  }
+}
+
+function closeModal() {
+  showHideThankYouPage(true);
+}
+
+function convertToHttps(url) {
+  // Check if the URL starts with 'http://'
+  if (url.startsWith("http://")) {
+    // Replace 'http://' with 'https://'
+    return url.replace("http://", "https://");
+  }
+
+  // If the URL is already using 'https://' or any other protocol, return as is
+  return url;
+}
+
+function removeHttpPrefix(url) {
+  // Remove 'https://' if present
+  let cleanedUrl = url.replace("https://", "");
+
+  // Remove 'http://' if present
+  cleanedUrl = cleanedUrl.replace("http://", "");
+
+  // Return the cleaned URL
+  return cleanedUrl;
 }
