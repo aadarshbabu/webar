@@ -1,8 +1,21 @@
 function handleContentUpload(self) {
+  if (typeof self === "boolean") {
+    const assetInput = document.getElementById("assets");
+
+    assetInput.click();
+  }
+
   const file = self.files[0];
   window.assetType = getFileType(file); // set the assetType according to the file extension.
-  //   window.assetParam.scale = 1.0;
-  //   window.assetParam.size = { width: 1.0, height: 1.0, depth: 1.0 };
+  // Initialize window.assetParam if it doesn't exist
+  if (!window.assetParam) {
+    window.assetParam = {
+      scale: 1.0,
+      size: { width: 1.0, height: 1.0, depth: 1.0 },
+    };
+  }
+  // window.assetParam.scale = 1.0;
+  // window.assetParam.size = { width: 1.0, height: 1.0, depth: 1.0 };
 
   if (isValidFile(window.assetType, file, "content-error")) {
     switch (window.assetType) {

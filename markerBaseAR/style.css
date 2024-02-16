@@ -1,1 +1,22 @@
+.footerBTN {
+  display: flex;
+  padding: 30px;
+  gap: 20px;
+}
 
+.btn-custom {
+  text-decoration: none;
+  padding: 7px 2rem;
+  border: 1px solid gray;
+  border-radius: 6px;
+}
+
+.publish {
+  background-color: darkblue;
+  color: whitesmoke;
+}
+
+.download {
+  background-color: rgb(22, 95, 129);
+  color: whitesmoke;
+}

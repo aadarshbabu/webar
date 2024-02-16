@@ -2,10 +2,10 @@
 AFRAME.registerComponent("model-controller", {
   dependencies: ["gltf-model"],
   schema: {
-    target: { default: "" },
+    target: { default: "modelFrame" },
   },
   init: function () {
-    this.enableAction = false;
+    this.enableAction = true;
     if (this.data.target) {
       console.log("Data", this.data.target);
       var target = document.querySelector(this.data.target);

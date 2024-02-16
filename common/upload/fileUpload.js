@@ -30,7 +30,7 @@ function UploadFile(self) {
     const base64Data = fileReader.result;
     window.markerImage = base64Data;
 
-    MarkerModule.getFullMarkerImage(base64Data, 0.9, 512, "blue").then(
+    MarkerModule.getFullMarkerImage(base64Data, 0.5, 512, "black").then(
       (fullMarkerImage) => {
         window.fullMarkerImage = fullMarkerImage;
         const blob = dataURItoBlob(fullMarkerImage);

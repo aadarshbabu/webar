@@ -9,7 +9,7 @@ class Header extends HTMLElement {
         <nav class="navbar bg-body-tertiary">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">
-                    <img src="../assits/LiberinLogo.jpg" alt="Logo" width="30" height="30"
+                    <img src="../assets/liberinLogo.jpg" alt="Logo" width="30" height="30"
                         class="d-inline-block align-text-top">
                     Liberin WebAR
                 </a>

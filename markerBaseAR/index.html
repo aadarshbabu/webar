@@ -16,15 +16,19 @@
     <!-- import JsZip -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.3.0/jszip.min.js"></script>
 
+    <div id="qrcode"></div>
+    <script type="text/javascript">
+        new QRCode(document.getElementById("qrcode"), "http://jindo.dev.naver.com/collie");
+    </script>
+
 
     <title>Liberin WebAR</title>
-    <script src="../common/ModalController/ModelControler.js"></script>
+
     <script src="../common/header/header.js"></script>
     <script src="../common/upload/fileHelper.js"></script>
     <script src="../common//fileHolder/fileHolder.js"></script>
     <script src="../common//Error//MarkerError.js"></script>
     <link rel="stylesheet" href="style.css">
-    <script src="./script.js"></script>
     <script src="../common/upload/handleContentUpload.js"></script>
     <script src="../common/upload/contentFileUpload.js"></script>
 
@@ -86,7 +90,7 @@
                 <div class="col-6">
                     <div class="px-3">
                         <div class="marker">
-                            <img src="../assits/marker.png" id="marker" alt="Default marker png" />
+                            <img src="../assets/marker.png" id="marker" alt="Default marker png" />
                             <div class="download-marker"
                                 style="display: flex; justify-content: flex-end; padding: 1em 0;">
                                 <div class="download-default-marker">
@@ -98,7 +102,7 @@
                                         </svg>
                                     </span>
                                     <a id="marker-download" class="filename"
-                                        style="text-decoration: none; color: black;" href="../assits/marker.png"
+                                        style="text-decoration: none; color: black;" href="../assets/marker.png"
                                         download>Download marker</a>
                                 </div>
 
@@ -134,10 +138,9 @@
                             <input id="content-file" accept="*" type="file" hidden onchange="UploadFile(this)" />
                             <label class="passive-button">
 
-                                <input class="form-control form-control-sm" id="formFileSm" type="file"
+                                <input class="form-control form-control-sm" id="assets" type="file"
                                     onchange="handleContentUpload(this)" class="form-control form-control-sm"
-                                    id="formFileSm" type="file"
-                                    accept=".glb, .mp4, image/png, image/gif, image/x-ms-bmp">
+                                    type="file" accept=".glb, .mp4, image/png, image/gif, image/x-ms-bmp">
 
                             </label>
                         </label>
@@ -146,8 +149,9 @@
                 </div>
                 <div class="col-6">
                     <div class="p-3">
-                        <div id="content-preview" class="card" target="content-file">
-                            <img src="../assits/upload.jpg" class="card-img-top" alt="...">
+                        <div onclick="handleContentUpload(true)" id="content-preview" class="card"
+                            target="content-file">
+                            <img src="../assets/upload.jpg" class="card-img-top" alt="...">
                         </div>
                     </div>
                 </div>
@@ -156,13 +160,62 @@
 
         </div>
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">Project Configuration.</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+
+                        <label for="exampleDataList" class="form-label">Enter Project Name</label>
+                        <input id="projectName" class="form-control" list="datalistOptions" id="exampleDataList"
+                            placeholder="Enter Project Name">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button onclick="saveBtn()" data-bs-dismiss="modal" type="button" class="btn btn-primary">Save
+                            changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </main>
 
     <footer>
 
+        <div class="footerBTN">
+            <button class="btn-custom download" onclick="makeZip()">Download Zip</button>
+            <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn-custom publish" id="publish"
+                href="">Publish</a>
+        </div>
 
     </footer>
+    <script>
+
+        const currentUrl = window.location.href;
+        console.log("current", currentUrl)
+
+        // Create a URL object
+        const url = new URL(currentUrl);
+
+        // Access query parameters using URLSearchParams
+        const queryParams = new URLSearchParams(url.search);
+
+        // Get the value of a specific parameter
+        const param1Value = queryParams.get('code');
+        const param2Value = queryParams.get('state');
+
+        console.log(param1Value); // Output: value1
+        console.log(param2Value); // Output: value2
+
+    </script>
+    <script src="./script.js"></script>
+
+    <script src="../common/ModalController/ModelControler.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
