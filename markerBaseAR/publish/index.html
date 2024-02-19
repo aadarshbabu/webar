@@ -16,6 +16,7 @@
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Space Grotesk:wght@400;500;700&display=swap" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
 </head>
 
 <body>
@@ -60,11 +61,11 @@
                                                     <div class="input-field-base">
                                                         <div class="input-with-label">
                                                             <div class="label">Website</div>
-                                                            <div class="input">
+                                                            <div id="showURlLink" class="input">
                                                                 <div class="add-on">
                                                                     <div class="addon">https://</div>
                                                                 </div>
-                                                                <button class="text-input">
+                                                                <button class="text-input" onclick="copyToClipboard()">
                                                                     <div id="link" class="text">
                                                                         blog.socialschedule.in/testProject78156repo
                                                                     </div>
@@ -112,11 +113,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class="button-primary mt-2">
+                            <button style="display: none;" id="download-btn" class="button-primary mt-2">
                                 <img class="download-02-icon" alt="" src="./public/download02.svg" />
 
                                 <div class="content1">
-                                    <b class="download-instance">Download your WebAR assets</b>
+                                    <a id="download-link" class="download-instance">Download your WebAR assets</a>
                                 </div>
                             </button>
                         </section>

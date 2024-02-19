@@ -55,7 +55,17 @@ window.onload = async () => {
       colorLight: "#ffffff",
       correctLevel: QRCode.CorrectLevel.H,
     });
-    return qrcode;
+
+    // Get the canvas element from the QR code
+    const canvas = qrDiv.querySelector("canvas");
+
+    // Get the data URL of the canvas
+    const dataURL = canvas.toDataURL("image/png");
+
+    // Log or use the data URL as needed
+    console.log("DataURI", dataURL);
+
+    return dataURL;
   }
 
   const projectName =
@@ -76,9 +86,12 @@ window.onload = async () => {
     const qrGenerate = await generateQRCode(httpsGitUrl);
 
     if (qrGenerate) {
+      console.log("QR", qrGenerate);
       const withoutPrefixUrl = removeHttpPrefix(httpsGitUrl);
+      ShowUrl();
       setLink(withoutPrefixUrl);
       hideSpinner();
+      const zipFile = createMarkerZip(imageData, qrGenerate);
     }
   } else {
     createError("Something went wrong");
@@ -143,4 +156,62 @@ function removeHttpPrefix(url) {
 
   // Return the cleaned URL
   return cleanedUrl;
+}
+
+function copyToClipboard() {
+  // Get the text content from the div with class 'text'
+  const textToCopy = document.querySelector(".text").innerText;
+
+  // Use the Clipboard API to copy the text to the clipboard
+  navigator.clipboard
+    .writeText(textToCopy)
+    .then(() => {
+      // Optionally, you can provide visual feedback to the user
+      alert("Link copied to clipboard!");
+    })
+    .catch((err) => {
+      console.error("Unable to copy to clipboard", err);
+    });
+}
+
+function ShowUrl() {
+  //   const showURl = document.getElementById("showURlLink");
+  //   showURl.style.display = "block";
+}
+
+function DownloadAssets() {
+  const downloadBTN = document.getElementById("download-btn");
+
+  downloadBTN.style.display = "flex";
+  return downloadBTN;
+}
+
+async function createMarkerZip(markerImage, qrImage) {
+  var zip = new JSZip();
+  // Convert data URL to a Blob
+  const markerImg = await fetch(markerImage).then((res) => res.blob());
+  const qrImg = await fetch(qrImage).then((res) => res.blob());
+
+  zip.file("marker.jpg", markerImg, { binary: true });
+  zip.file("qrImage.jpg", qrImg, { binary: true });
+
+  let promise;
+
+  zip.generateAsync({ type: "blob" }).then(function (blob) {
+    const link = DownloadAssets();
+    link.onclick = () => DownloadZip(blob);
+  });
+
+  return promise;
+}
+
+function DownloadZip(blob) {
+  const a = document.createElement("a");
+  document.body.appendChild(a);
+  a.style.display = "none";
+  const url = window.URL.createObjectURL(blob);
+  a.href = url;
+  a.download = "example.zip";
+  a.click();
+  window.URL.revokeObjectURL(url);
 }
