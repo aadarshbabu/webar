@@ -55,16 +55,16 @@ const supportedFileMap = {
     maxSize: 100 * 1024 * 1024,
     maxSizeText: "100MB",
   },
-  // image: {
-  //   types: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
-  //   maxSize: 15 * 1024 * 1024,
-  //   maxSizeText: "15MB",
-  // },
-  // audio: {
-  //   types: ["audio/wav", "audio/mp3"],
-  //   maxSize: 10 * 1024 * 1024,
-  //   maxSizeText: "10MB",
-  // },
+  image: {
+    types: ["image/png", "image/jpeg", "image/jpg", "image/gif"],
+    maxSize: 15 * 1024 * 1024,
+    maxSizeText: "15MB",
+  },
+  audio: {
+    types: ["audio/wav", "audio/mp3"],
+    maxSize: 10 * 1024 * 1024,
+    maxSizeText: "10MB",
+  },
   video: {
     types: ["video/mp4"],
     maxSize: 100 * 1024 * 1024,
@@ -76,10 +76,10 @@ function getFileType(file) {
   let type = file.name.split(".").pop().toLocaleLowerCase();
 
   if (supportedFileMap["3d"].types.indexOf(type) > -1) return "3d";
-  // if (supportedFileMap["image"].types.indexOf("image/" + type) > -1)
-  //   return "image";
-  // if (supportedFileMap["audio"].types.indexOf("audio/" + type) > -1)
-  //   return "audio";
+  if (supportedFileMap["image"].types.indexOf("image/" + type) > -1)
+    return "image";
+  if (supportedFileMap["audio"].types.indexOf("audio/" + type) > -1)
+    return "audio";
   if (supportedFileMap["video"].types.indexOf("video/" + type) > -1)
     return "video";
 }

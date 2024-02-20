@@ -26,7 +26,7 @@ class FileHolder extends HTMLElement {
   }
 
   connectedCallback() {
-    this.classList.add("pages-content-element");
+    // this.classList.add("pages-content-element");
   }
 }
 
