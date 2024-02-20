@@ -174,7 +174,7 @@
   width: 830px;
   flex-direction: row;
   justify-content: center;
-  padding: 0 20px;
+  padding: 0 100px;
   box-sizing: border-box;
 }
 .gradient {
