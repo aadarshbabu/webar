@@ -620,7 +620,7 @@
 }
 .frame-with-three-arrows {
   width: 516px;
-  overflow-x: auto;
+  /* overflow-x: auto; */
   flex-direction: row;
   max-width: 100%;
 }

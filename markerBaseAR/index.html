@@ -129,9 +129,9 @@
                                                 <li class="d-object-gltf">
                                                     3D Object (.gltf, .glb .zip; max size 50MB)
                                                 </li>
-                                                <li class="image-jpg-png">
+                                                <!-- <li class="image-jpg-png">
                                                     Image (.jpg, .png, .gif; max size 15MB)
-                                                </li>
+                                                </li> -->
                                                 <li>Video (.mp4; max size 25MB)</li>
                                             </ul>
                                             <p id="content-error" class="error"></p>
@@ -144,8 +144,8 @@
                                         <b class="text2">Upload File</b>
                                     </div>
                                 </button>
-                                <input id="content-file" accept=".glb, .mp4, image/png, image/gif, image/x-ms-bmp"
-                                    type="file" hidden onchange="handleContentUpload(this)" />
+                                <input id="content-file" accept=".glb, .mp4" type="file" hidden
+                                    onchange="handleContentUpload(this)" />
                             </div>
                             <div>
                                 <!-- <img class="frame-icon" loading="eager" alt="" src="./public/frame-1@2x.png" /> -->
@@ -206,22 +206,22 @@
                         <div class="frame-with-three-arrows">
                             <div class="up-arrow-container">
                                 <div class="child-tag-frame">
-                                    <img class="arrow-circle-up-right-icon" loading="eager" alt=""
+                                    <img class="arrow-circle-up-right-icon" alt=""
                                         src="./public/arrowcircleupright.svg" />
 
-                                    <img class="arrow-circle-up-right-icon1" loading="eager" alt=""
+                                    <img class="arrow-circle-up-right-icon1" alt=""
                                         src="./public/arrowcircleupright-1.svg" />
 
-                                    <img class="arrow-circle-up-right-icon2" loading="eager" alt=""
+                                    <img class="arrow-circle-up-right-icon2" alt=""
                                         src="./public/arrowcircleupright-2.svg" />
                                 </div>
                             </div>
                             <div class="up-arrow-container1">
                                 <div class="arrow-circle-up-right-parent">
-                                    <img class="arrow-circle-up-right-icon3" loading="eager" alt=""
+                                    <img class="arrow-circle-up-right-icon3" alt=""
                                         src="./public/arrowcircleupright.svg" />
 
-                                    <img class="arrow-circle-up-right-icon4" loading="eager" alt=""
+                                    <img class="arrow-circle-up-right-icon4" alt=""
                                         src="./public/arrowcircleupright-4.svg" />
 
                                     <img class="arrow-circle-up-right-icon5" loading="eager" alt=""
@@ -247,122 +247,6 @@
 
     <main>
 
-        <!-- <div class="container pt-3">
-
-
-            <div class="row gx-5">
-                <p class="h2">Marker Base AR</p>
-                <p class="p"> A marker-based AR experience uses a black and white image to anchor the AR
-                    content.
-                    Your scene will appear when the marker is in the field of view of your camera.</p>
-
-                <p class="paragraph">
-                    You can print a paper version of your marker (which we recommend), or display it on a
-                    screen.
-                </p>
-
-                <div class="col-6">
-                    <div class="p-3">
-                        <p class="lead">1. Use a premade marker or upload your own</p>
-                        <p class="paragraph">
-                            Here is a sample marker for you. Feel free to use it as the marker for your project.
-                            Alternatively, click “Upload image” to use a custom one. Not sure what makes a good
-                            marker? Check
-                            out <a class="link" target="_blank"
-                                href="https://github.com/AR-js-org/studio/blob/master/what-makes-a-good-marker.md">this
-                                guide</a>.
-                        </p>
-
-                        <ul>
-                            <li>Marker File Size less then 10mb And Type (jpeg, png)</li>
-                        </ul>
-
-                        <label class="passive-button">
-                            <label for="formFileSm" class="form-label">Upload Marker</label>
-                            <input onchange="UploadFile(this)" class="form-control form-control-sm" id="formFileSm"
-                                type="file" accept="image/png, image/jpeg">
-                        </label>
-
-                        <p id="marker-error" class="error pt-4 text-danger">
-
-                        </p>
-                    </div>
-                </div>
-
-                <div class="col-6">
-                    <div class="px-3">
-                        <div class="marker">
-                            <img src="../assets/marker.png" id="marker" alt="Default marker png" />
-                            <div class="download-marker"
-                                style="display: flex; justify-content: flex-end; padding: 1em 0;">
-                                <div class="download-default-marker">
-                                    <span>
-                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none">
-                                            <path
-                                                d="M16.5 8L15.09 6.59L9.5 12.17V0H7.5V12.17L1.92 6.58L0.5 8L8.5 16L16.5 8Z"
-                                                fill="black" />
-                                        </svg>
-                                    </span>
-                                    <a id="marker-download" class="filename"
-                                        style="text-decoration: none; color: black;" href="../assets/marker.png"
-                                        download>Download marker</a>
-                                </div>
-
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-            </div>
-
-
-
-            <div class="row gx-5">
-                <div class="col-6">
-                    <div class="p-3">
-                        <p class="lead">2. Choose the content </p>
-                        <p class="paragraph">
-                        <p>Select the type of content you would like to link to your marker and then upload the file
-                            from your
-                            computer.</p>
-                        <p class="bold">
-                            Please check the file name and remove whitepaces.
-                        </p>
-                        <ul>
-                            <li>3D Object (.gltf, .glb .zip; max size 100MB)</li>
-                            <li>Image (.jpg, .png, .gif; max size 15MB)</li>
-                            <li>Video (.mp4; max size 100MB)</li>
-                        </ul>
-                        </p>
-                        <label class="passive-button file-input">
-                            <input id="content-file" accept="*" type="file" hidden onchange="UploadFile(this)" />
-                            <label class="passive-button">
-
-                                <input class="form-control form-control-sm" id="assets" type="file"
-                                    onchange="handleContentUpload(this)" class="form-control form-control-sm"
-                                    type="file" accept=".glb, .mp4, image/png, image/gif, image/x-ms-bmp">
-
-                            </label>
-                        </label>
-                        <p id="content-error" class="error"></p>
-                    </div>
-                </div>
-                <div class="col-6">
-                    <div class="p-3">
-                        <div onclick="handleContentUpload(true)" id="content-preview" class="card"
-                            target="content-file">
-                            <img src="../assets/upload.jpg" class="card-img-top" alt="...">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div> -->
-
-
         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
@@ -387,15 +271,7 @@
 
     </main>
 
-    <!-- <footer>
 
-        <div class="footerBTN">
-            <button class="btn-custom download" onclick="makeZip()">Download Zip</button>
-            <a data-bs-toggle="modal" data-bs-target="#exampleModal" class="btn-custom publish" id="publish"
-                href="">Publish</a>
-        </div>
-
-    </footer> -->
 
     <script src="./script.js"></script>
 
