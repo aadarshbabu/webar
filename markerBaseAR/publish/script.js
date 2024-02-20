@@ -9,7 +9,10 @@ window.onload = async () => {
 
   const code = getUrlParameter("code");
 
-  let response = await fetch(`http://localhost:4000/code?code=${code}`);
+  let response = await fetch(
+    `https://nodewebar.onrender.com/code?code=${code}`
+  );
+
   response = await response.json();
   console.log("Res", response);
 
