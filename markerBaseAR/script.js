@@ -101,7 +101,7 @@ const makeZip = () => {
   if (!window.assetFile || !window.assetName)
     return alert("please upload a content");
 
-    MarkerModule.getMarkerPattern(window.markerImage)
+  MarkerModule.getMarkerPattern(window.markerImage)
     .then(
       (markerPattern) =>
         new Package({
@@ -125,7 +125,8 @@ const makeZip = () => {
 };
 
 const clientID = "89699af404caf50e8e38";
-const redirectURI = "https://172.30.32.1:5501/markerBaseAR/publish/index.html";
+const redirectURI =
+  "https://blog.socialschedule.in/webar/markerBaseAR/publish/index.html";
 const randomString = Math.round(334) * 234 + "repo";
 
 // const publish = document.getElementById("publish");
