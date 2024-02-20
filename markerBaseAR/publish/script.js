@@ -175,8 +175,8 @@ function copyToClipboard() {
 }
 
 function ShowUrl() {
-  //   const showURl = document.getElementById("showURlLink");
-  //   showURl.style.display = "block";
+  const showURl = document.getElementById("showURlLink");
+  showURl.style.display = "flex";
 }
 
 function DownloadAssets() {
@@ -211,7 +211,7 @@ function DownloadZip(blob) {
   a.style.display = "none";
   const url = window.URL.createObjectURL(blob);
   a.href = url;
-  a.download = "example.zip";
+  a.download = "marker.zip";
   a.click();
   window.URL.revokeObjectURL(url);
 }
