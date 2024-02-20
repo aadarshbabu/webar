@@ -431,3 +431,7 @@
     gap: var(--gap-21xl);
   }
 }
+
+#download-link {
+  text-decoration: none;
+}

@@ -14,6 +14,10 @@ function UploadFile(self) {
   const file = self.files[0];
   console.log("File", file);
 
+  if (window.assetType) {
+    enablePublishButton();
+  }
+
   if (!checkFile(file.size) || !checkFileType(file.type)) {
     MarkerError(
       "Marker is not valid | please check the marker file size or type. "

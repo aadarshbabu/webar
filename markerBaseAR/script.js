@@ -101,19 +101,18 @@ const makeZip = () => {
   if (!window.assetFile || !window.assetName)
     return alert("please upload a content");
 
-  MarkerModule.getMarkerPattern(window.markerImage)
-    .then((markerPattern) => {
-      new Package({
-        arType: "pattern",
-        assetType: window.assetType, // image/audio/video/3d
-        assetFile: window.assetFile,
-        assetName: window.assetName,
-        assetParam: window.assetParam,
-        markerPatt: markerPattern,
-        markerImage: window.markerImage,
-        fullMarkerImage: window.fullMarkerImage,
-      });
-    })
+    MarkerModule.getMarkerPattern(window.markerImage)
+    .then(
+      (markerPattern) =>
+        new Package({
+          arType: "pattern",
+          assetType: window.assetType, // image/audio/video/3d
+          assetFile: window.assetFile,
+          assetName: window.assetName,
+          assetParam: window.assetParam,
+          markerPatt: markerPattern,
+        })
+    )
     .then((package) => package.serve({ packageType: "zip" }))
     .then((base64) => {
       // window.location = `data:application/zip;base64,${base64}`;
@@ -126,7 +125,7 @@ const makeZip = () => {
 };
 
 const clientID = "89699af404caf50e8e38";
-const redirectURI = "https://172.19.192.1:5501/markerBaseAR/publish/index.html";
+const redirectURI = "https://172.30.32.1:5501/markerBaseAR/publish/index.html";
 const randomString = Math.round(334) * 234 + "repo";
 
 // const publish = document.getElementById("publish");

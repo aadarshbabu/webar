@@ -1,6 +1,6 @@
 function enablePublishButton() {
   document.getElementById("publish").style.opacity = 1;
-  // document.getElementById("download").style.opacity = 1;
+  document.getElementById("download").style.opacity = 1;
 }
 
 function handleContentUpload(self) {
@@ -33,7 +33,8 @@ function handleContentUpload(self) {
         break;
       }
       case "audio": {
-        handleAudioUpload(file);
+        alert("Audio formate not supported");
+        // handleAudioUpload(file);
         break;
       }
       case "video": {

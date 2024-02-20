@@ -5,6 +5,8 @@ function contentFileUpload(self) {
 }
 
 function handleImageUpload(file) {
+  alert("Currently WebAR only supported Video and 3d");
+
   const fileName = file.name;
   const fileURL = URL.createObjectURL(file);
   const reader = new FileReader();
