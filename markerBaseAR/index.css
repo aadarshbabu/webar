@@ -828,3 +828,7 @@
 .arrow-right-instance {
   text-decoration: none;
 }
+
+.error {
+  color: red;
+}
