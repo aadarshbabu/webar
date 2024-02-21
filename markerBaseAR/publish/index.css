@@ -435,3 +435,6 @@
 #download-link {
   text-decoration: none;
 }
+#spinnerContainer {
+  align-items: center;
+}
