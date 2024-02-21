@@ -11,11 +11,11 @@ const previewUrl = (file, name, isMarker) => {
 const previewVideoTemplate = (fileUrl, name) => {
   const contentPreview = document.getElementById("content-preview");
   contentPreview.innerHTML = "";
+  contentPreview.style.width = "300px";
   const video = document.createElement("video");
   video.src = fileUrl;
   video.setAttribute("id", "video");
-  video.setAttribute("controls", "true");
-  console.log("Video", video);
+  video.setAttribute("autoplay", "true");
   contentPreview.appendChild(video);
 };
 
@@ -183,6 +183,11 @@ const publishToGithub = () => {
     var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
     myModal.show();
   });
+};
+
+const enableDownloadMarker = () => {
+  console.log("mke");
+  document.getElementById("marker-download").style.display = "block";
 };
 
 publishToGithub();
