@@ -96,10 +96,10 @@ const previewModelTemplate = (fileURL, fileName) => `
     `;
 
 const makeZip = () => {
-  if (!window.markerImage) return alert("please select a marker image");
-  if (!window.assetType) return alert("please select the correct content type");
+  if (!window.markerImage) return showTost("Please select the marker", "error");
+  if (!window.assetType) return showTost("Please select the content", "error");
   if (!window.assetFile || !window.assetName)
-    return alert("please upload a content");
+    return showTost("Please select the marker and content", "error");
 
   MarkerModule.getMarkerPattern(window.markerImage)
     .then(
@@ -128,19 +128,13 @@ const clientID = "89699af404caf50e8e38";
 const redirectURI = "https://172.30.32.1:5501/markerBaseAR/publish/index.html";
 const randomString = Math.round(334) * 234 + "repo";
 
-// const publish = document.getElementById("publish");
-
-// publish.setAttribute(
-//   "href",
-//   `https://github.com/login/oauth/authorize?client_id=${clientID}&scope=public_repo&state=${randomString}&redirect_uri=${redirectURI}`
-// );
-
 function createUploadableAsset() {
-  if (!window.markerImage) return alert("Please, select a marker image.");
+  if (!window.markerImage)
+    return showTost("Please, select a marker image.", "error");
   if (!window.assetType)
-    return alert("Please, select the correct content type.");
+    return showTost("Please, select the correct content type.", "error");
   if (!window.assetFile || !window.assetName)
-    return alert("Please, upload a content.");
+    return showTost("Please, upload a content.", "error");
 
   MarkerModule.getMarkerPattern(window.markerImage).then((markerPattern) => {
     window.name = JSON.stringify({
@@ -172,3 +166,23 @@ const saveBtn = () => {
 
   window.location = `https://github.com/login/oauth/authorize?client_id=${clientID}&scope=public_repo&state=${randomString}&redirect_uri=${redirectURI}`;
 };
+
+const publishToGithub = () => {
+  const publish = document.getElementById("publish");
+
+  publish.addEventListener("click", (e) => {
+    e.preventDefault();
+
+    if (!window.markerImage)
+      return showTost("Please select the marker", "error");
+    if (!window.assetType)
+      return showTost("Please select the content", "error");
+    if (!window.assetFile || !window.assetName)
+      return showTost("Please select the marker and content", "error");
+
+    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"));
+    myModal.show();
+  });
+};
+
+publishToGithub();

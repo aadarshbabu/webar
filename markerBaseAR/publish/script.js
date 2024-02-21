@@ -217,4 +217,5 @@ function DownloadZip(blob) {
   a.download = "DwARassets.zip";
   a.click();
   window.URL.revokeObjectURL(url);
+  showTost("Assets download successful", "info");
 }
