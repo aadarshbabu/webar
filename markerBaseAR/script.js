@@ -15,6 +15,7 @@ const previewVideoTemplate = (fileUrl, name) => {
   const video = document.createElement("video");
   video.src = fileUrl;
   video.setAttribute("id", "video");
+  video.setAttribute("controls", true);
   video.setAttribute("autoplay", "true");
 
   const change = document.createElement("div");
@@ -27,7 +28,7 @@ const previewVideoTemplate = (fileUrl, name) => {
 };
 
 const unloadFileTemplate = (fileName, fileURL) => `
-        <div onclick="onclick="handleContentUpload(true)" class="remove-marker">
+        <div onclick="handleContentUpload(true)" class="remove-marker">
             <span class="crossmark" onclick="handleContentUpload(true)">&times;</span>
             <span class="filename">Change</span>
         </div>
