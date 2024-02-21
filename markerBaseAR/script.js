@@ -16,7 +16,14 @@ const previewVideoTemplate = (fileUrl, name) => {
   video.src = fileUrl;
   video.setAttribute("id", "video");
   video.setAttribute("autoplay", "true");
+
+  const change = document.createElement("div");
+  change.innerHTML = unloadFileTemplate();
+
+  // contentPreview.appendChild(change);
+
   contentPreview.appendChild(video);
+  contentPreview.appendChild(change);
 };
 
 const unloadFileTemplate = (fileName, fileURL) => `
