@@ -5,12 +5,11 @@
   object-fit: contain;
   position: absolute;
   left: 0;
-  top: 20px;
   transform: scale(2);
 }
 .wrapper-logo-square {
-  height: 80px;
-  width: 80px;
+  height: 60px;
+  width: 60px;
   position: relative;
   border-radius: var(--br-mini);
   min-height: 80px;
@@ -37,7 +36,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: var(--padding-9xl);
+  padding: 12px 15px;
   gap: var(--gap-3xs);
   white-space: nowrap;
   text-decoration: none;
@@ -336,7 +335,7 @@
 .main,
 .row1 {
   align-self: stretch;
-  justify-content: flex-start;
+  justify-content: space-between;
   gap: var(--gap-109xl);
 }
 .row1 {
@@ -846,4 +845,17 @@
   color: #0c5460 !important;
 }
 
-/* Add similar styles for other types (success, warning) */
+#video {
+  max-width: 300px;
+}
+
+#marker {
+  border: 1px solid black;
+  margin-bottom: 10px;
+}
+
+.remove-marker {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+}

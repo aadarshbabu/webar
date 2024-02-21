@@ -54,7 +54,7 @@ function handleVideoUpload(file) {
       height: video.videoHeight,
     };
 
-    video.parentElement.style.backgroundColor = "black";
+    // video.parentElement.style.backgroundColor = "black";
     document.querySelector("#videoFrame").style.opacity = 1;
   });
 }
@@ -72,6 +72,7 @@ function handleModelUpload(file) {
       window.assetName = "asset.glb";
       checkUserUploadStatus();
       let preview = document.getElementById("content-preview");
+      preview.removeAttribute("style");
       preview.removeAttribute("class");
 
       preview.innerHTML = previewModelTemplate(reader.result, file.name);
