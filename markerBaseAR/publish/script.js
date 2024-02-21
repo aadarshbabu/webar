@@ -7,14 +7,24 @@ window.onload = async () => {
     return urlParams.get(name);
   }
 
+  const controller = new AbortController();
+
+  // 5 second timeout:
+
+  const timeoutId = setTimeout(() => controller.abort(), 10000);
+
   const code = getUrlParameter("code");
 
   let response = await fetch(
-    `https://nodewebar.onrender.com/code?code=${code}`
+    `https://nodewebar.onrender.com/code?code=${code}`,
+    { signal: controller.signal }
   );
 
   response = await response.json();
   console.log("Res", response);
+  if (response) {
+    clearTimeout(timeoutId);
+  }
 
   window.session = JSON.parse(window.name);
 
