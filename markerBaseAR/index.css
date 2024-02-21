@@ -40,6 +40,7 @@
   padding: var(--padding-9xl);
   gap: var(--gap-3xs);
   white-space: nowrap;
+  text-decoration: none;
 }
 .features-section-container {
   display: flex;
